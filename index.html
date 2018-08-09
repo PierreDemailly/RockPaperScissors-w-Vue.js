@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <div id="form-interface" v-if="seen">
+        <label for="pseudo">Choisis un pseudo:</label>
+        <input type="text" v-model="player_name" id="pseudo">
+        <p class="error" id="error"></p>
+        <button type="button" id="play-btn" class="play-btn" @click="start">Jouer</button>
+    </div><!-- #form-interface -->
+
+    <div id="game-interface" v-if="seen">
+        <h1>Hello {{player_name}} !</h1>
+        <ul>
+            <li>{{player_name}}: {{points_player}} points.</li>
+            <li>Dernier choix: {{pick_player}}</li>
+        </ul>
+        <ul>
+            <li>Ordinateur: {{points_ordi}} points.</li>
+            <li>Dernier choix: {{pick_ordi}}</li>
+        </ul>
+        <div class="picks">
+            <button type="button" @click="play('rock')">Pierre</button>
+            <button type="button" @click="play('paper')">Feuille</button>
+            <button type="button" @click="play('scissors')">Ciseaux</button>
+        </div>
+    </div><!-- #game-interface -->
+
+    <div id="restart-interface" v-if="seen">
+        <p>Le gagnant est {{winner}}</p>
+        <button type="button" @click="restart">Rejouer</button>
+    </div><!-- #restart-interface -->
+
+    <script src="vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
